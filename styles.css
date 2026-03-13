@@ -868,3 +868,47 @@ body::before {
     radial-gradient(ellipse 500px 350px at 80% 60%, rgba(6, 182, 212, 0.05), transparent),
     radial-gradient(ellipse 400px 300px at 50% 80%, rgba(232, 121, 249, 0.04), transparent);
 }
+
+/* ── QUANTUM BUBBLE (Mobile Shortcut) ───────────────── */
+.quantum-bubble {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.3s var(--ease-cosmic), box-shadow 0.3s var(--ease-cosmic);
+}
+
+.quantum-bubble:hover, .quantum-bubble:active {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(168, 85, 247, 0.7), 0 0 60px rgba(6, 182, 212, 0.5);
+}
+
+.quantum-bubble svg {
+  width: 32px;
+  height: 32px;
+  animation: atomSpin 10s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes atomSpin {
+  0% { transform: rotate(0deg) scale(1.05); }
+  50% { transform: rotate(180deg) scale(0.95); }
+  100% { transform: rotate(360deg) scale(1.05); }
+}
+
+@media (min-width: 769px) {
+  .quantum-bubble {
+    display: none !important;
+  }
+}

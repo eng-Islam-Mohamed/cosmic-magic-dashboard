@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnalyticsPage();
     initUsersPage();
     initSettingsPage();
+    initQuantumBubble();
 });
 
 /* ══════════════════════════════════════════════════════
@@ -578,4 +579,23 @@ function hexToRgba(hex, alpha) {
     const g = parseInt(hex.slice(3, 5), 16);
     const b = parseInt(hex.slice(5, 7), 16);
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/* ══════════════════════════════════════════════════════
+   QUANTUM BUBBLE (Mobile Shortcut)
+   ══════════════════════════════════════════════════════ */
+function initQuantumBubble() {
+    if (window.location.pathname.includes('quantumica.html')) return;
+
+    const bubble = document.createElement('a');
+    bubble.href = 'quantumica.html';
+    bubble.className = 'quantum-bubble';
+    bubble.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="4"></circle>
+            <ellipse cx="12" cy="12" rx="11" ry="4" transform="rotate(45 12 12)"></ellipse>
+            <ellipse cx="12" cy="12" rx="11" ry="4" transform="rotate(-45 12 12)"></ellipse>
+        </svg>
+    `;
+    document.body.appendChild(bubble);
 }
