@@ -907,8 +907,4 @@ body::before {
   100% { transform: rotate(360deg) scale(1.05); }
 }
 
-@media (min-width: 769px) {
-  .quantum-bubble {
-    display: none !important;
-  }
-}
+/* Visible on all screen sizes */
