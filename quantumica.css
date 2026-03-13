@@ -1,0 +1,572 @@
+/* ======================================================
+   QUANTUMICA PAGE — Styles
+   ====================================================== */
+
+:root {
+    --q-cyan: #06b6d4;
+    --q-blue: #3b82f6;
+    --q-emerald: #10b981;
+    --q-dark: #02040a;
+}
+
+.page-quantumica {
+    background: var(--q-dark);
+    color: #f0f0ff;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Base override for nav */
+.page-quantumica .hero-nav {
+    background: rgba(2, 4, 10, 0.7);
+    border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.page-quantumica .q-logo-text {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, var(--q-blue), var(--q-cyan), var(--q-emerald));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-quantumica .hero-nav-links a.active.quantum-link {
+    color: var(--q-cyan);
+    background: rgba(6, 182, 212, 0.15);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+/* Canvas Background */
+#quantum-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Layout */
+.q-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.q-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: qFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.q-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.q-gradient-text {
+    background: linear-gradient(to right, var(--q-blue), var(--q-cyan), var(--q-emerald));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+    animation: qGradientShift 6s ease-in-out infinite alternate;
+}
+
+.q-subtitle {
+    font-size: 1.1rem;
+    color: rgba(200, 220, 255, 0.7);
+    letter-spacing: 0.5px;
+}
+
+/* Visual Interface Area */
+.q-interface {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    animation: qFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* CSS 3D Atom Background for Chat */
+.q-orb-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.4;
+    transform-style: preserve-3d;
+    animation: atomSpin 30s linear infinite;
+}
+
+.q-nucleus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, var(--q-cyan) 40%, var(--q-blue) 80%);
+    box-shadow: 0 0 40px var(--q-cyan), 0 0 80px var(--q-blue);
+    animation: pulseCore 2s ease-in-out infinite alternate;
+}
+
+.q-orbit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+.q-orbit-1 {
+    transform: rotateY(70deg) rotateZ(0deg);
+    animation: orbit1 8s linear infinite;
+}
+
+.q-orbit-2 {
+    transform: rotateY(70deg) rotateX(60deg);
+    animation: orbit2 10s linear infinite;
+}
+
+.q-orbit-3 {
+    transform: rotateY(70deg) rotateX(-60deg);
+    animation: orbit3 12s linear infinite;
+}
+
+.q-electron {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--q-emerald);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--q-emerald), 0 0 30px #fff;
+}
+
+@keyframes atomSpin {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes orbit1 {
+    100% {
+        transform: rotateY(70deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit2 {
+    100% {
+        transform: rotateY(70deg) rotateX(60deg) rotateZ(360deg);
+    }
+}
+
+@keyframes orbit3 {
+    100% {
+        transform: rotateY(70deg) rotateX(-60deg) rotateZ(360deg);
+    }
+}
+
+@keyframes pulseCore {
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        box-shadow: 0 0 60px var(--q-cyan), 0 0 120px var(--q-blue);
+    }
+}
+
+/* Chat Box */
+.q-chat-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 15, 30, 0.6) !important;
+    border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    border-radius: 24px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(6, 182, 212, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px) saturate(1.8) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    transform: translateZ(20px);
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.q-chat-box:hover {
+    border-color: rgba(6, 182, 212, 0.5) !important;
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(6, 182, 212, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.q-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, transparent 100%);
+}
+
+.q-ai-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid rgba(6, 182, 212, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--q-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.q-ai-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(from 0deg, transparent 70%, var(--q-cyan) 100%);
+    animation: spin 3s linear infinite;
+    z-index: 0;
+}
+
+.q-ai-avatar svg {
+    position: relative;
+    z-index: 1;
+}
+
+.q-ai-avatar::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #0a0f1e;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.q-ai-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+    color: #fff;
+}
+
+.q-ai-info span {
+    font-size: 0.75rem;
+    color: var(--q-emerald);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.q-status-dot {
+    margin-left: auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--q-cyan);
+}
+
+.q-status-dot.pulse {
+    box-shadow: 0 0 10px var(--q-cyan);
+    animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+        box-shadow: 0 0 20px var(--q-cyan);
+    }
+}
+
+/* Chat Messages */
+.q-chat-messages {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-behavior: smooth;
+}
+
+.q-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.q-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.q-chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(6, 182, 212, 0.3);
+    border-radius: 4px;
+}
+
+.q-msg-row {
+    display: flex;
+    width: 100%;
+}
+
+.q-msg-row.ai {
+    justify-content: flex-start;
+}
+
+.q-msg-row.user {
+    justify-content: flex-end;
+}
+
+.q-msg-bubble {
+    max-width: 80%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    word-wrap: break-word;
+    animation: qPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* Base styles for markdown content in bubble */
+.q-msg-bubble p {
+    margin-bottom: 0.8em;
+}
+
+.q-msg-bubble p:last-child {
+    margin-bottom: 0;
+}
+
+.q-msg-bubble pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.q-msg-bubble code {
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.q-msg-bubble ul,
+.q-msg-bubble ol {
+    margin-left: 20px;
+    margin-bottom: 0.8em;
+}
+
+.q-msg-row.ai .q-msg-bubble {
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-top-left-radius: 4px;
+    color: #e0e7ff;
+}
+
+.q-msg-row.user .q-msg-bubble {
+    background: linear-gradient(135deg, var(--q-blue), #4f46e5);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    border-top-right-radius: 4px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.q-typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+}
+
+.q-typing-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--q-cyan);
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.q-typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.q-typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+        box-shadow: 0 0 8px var(--q-cyan);
+    }
+}
+
+@keyframes qPopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Chat Input */
+.q-chat-input-area {
+    padding: 20px;
+    border-top: 1px solid rgba(6, 182, 212, 0.15);
+    background: rgba(2, 4, 10, 0.4);
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+#chat-input {
+    flex: 1;
+    background: rgba(10, 15, 30, 0.5);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 16px;
+    padding: 14px 18px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: none;
+    max-height: 120px;
+    min-height: 52px;
+    outline: none;
+    transition: all 0.3s ease;
+    line-height: 1.4;
+}
+
+#chat-input:focus {
+    border-color: var(--q-cyan);
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15), 0 0 15px rgba(6, 182, 212, 0.2);
+    background: rgba(10, 15, 30, 0.8);
+}
+
+#chat-input::placeholder {
+    color: rgba(160, 180, 220, 0.4);
+}
+
+.q-send-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--q-cyan), var(--q-blue));
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+.q-send-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+}
+
+.q-send-btn:active {
+    transform: translateY(1px) scale(0.95);
+}
+
+.q-send-btn svg {
+    transition: transform 0.3s;
+}
+
+.q-send-btn:hover svg {
+    transform: translate(2px, -2px);
+}
+
+@keyframes qFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes qGradientShift {
+    from {
+        filter: hue-rotate(-15deg);
+    }
+
+    to {
+        filter: hue-rotate(15deg);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .q-interface {
+        height: calc(100vh - 280px);
+        min-height: 500px;
+    }
+
+    .q-title {
+        font-size: 2.2rem;
+    }
+
+    .q-content {
+        padding-top: 100px;
+    }
+}
