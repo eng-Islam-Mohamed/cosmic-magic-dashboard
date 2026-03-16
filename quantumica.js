@@ -200,7 +200,11 @@ function initQuantumChat() {
     const chatMessages = document.getElementById('chat-messages');
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
-    const API_KEY = 'sk-5f8648fdd8d44d63b4765065c37a79c0';
+    const API_KEY = window.QUANTUM_API_KEY || '';
+    
+    if (!API_KEY) {
+        console.warn('API_KEY is missing. Please add it to config.js.');
+    }
 
     // Chat history for context
     let conversationHistory = [
