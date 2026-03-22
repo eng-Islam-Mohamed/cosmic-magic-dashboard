@@ -1,1 +1,1 @@
-window.QUANTUM_API_KEY = "sk-48c4e97e487a46b682ae2b876181b306";
+window.QUANTUM_API_KEY = "";
